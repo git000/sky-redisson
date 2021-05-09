@@ -48,6 +48,8 @@ SkyRedisApplication，启动masterslave环境
 | 172.100.0.16     | 26379 | 哨兵   |
 | 172.100.0.17     | 26379 | 哨兵   |
 
+#### 首次在执行docker-compose命令时需要删除配置文件中自动生成的内容
+
 #### 安装ssh
 docker run -itd --name test1 --network 1master3slave3sentinal_extnetwork --ip 172.100.0.10 centos:7 /bin/bash
 
