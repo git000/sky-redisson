@@ -1,0 +1,108 @@
+version: "3"
+services:
+#  centos7:
+#    image: centos:7
+#    container_name: centos7
+#    ports:
+#      - 6100:22
+#    networks:
+#      extnetwork:
+#        ipv4_address: 172.100.0.10
+  master:
+    image: redis:5.0
+    container_name: redis-master-6300
+    ports: 
+      - 6300:6379
+    command: redis-server /etc/redis/redis.conf #--appendonly yes
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/redis-m.conf:/etc/redis/redis.conf 
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.11
+  slave1:
+    image: redis:5.0
+    container_name: redis-slave-6301
+    depends_on:
+      - master
+    ports:
+      - 6301:6379
+    command: redis-server /etc/redis/redis.conf #--appendonly yes
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/redis-s.conf:/etc/redis/redis.conf 
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.12
+  slave2:
+    image: redis:5.0
+    container_name: redis-slave-6302
+    depends_on:
+      - master
+    ports:
+      - 6302:6379
+    command: redis-server /etc/redis/redis.conf #--appendonly yes
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/redis-s.conf:/etc/redis/redis.conf 
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.13
+  slave3:
+    image: redis:5.0
+    container_name: redis-slave-6303
+    depends_on:
+      - master
+    ports:
+      - 6303:6379
+    command: redis-server /etc/redis/redis.conf #--appendonly yes
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/redis-s.conf:/etc/redis/redis.conf 
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.14
+  sentinel1:
+    image: redis:5.0
+    container_name: sentinel1
+    depends_on:
+      - slave3
+    ports:
+      - 26379:26379
+    command: redis-sentinel /etc/redis/sentinel.conf
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/sentinel-26379.conf:/etc/redis/sentinel.conf
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.15
+  sentinel2:
+    image: redis:5.0
+    container_name: sentinel2
+    depends_on:
+      - slave3
+    ports:
+      - 26380:26379
+    command: redis-sentinel /etc/redis/sentinel.conf
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/sentinel-26380.conf:/etc/redis/sentinel.conf
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.16
+  sentinel3:
+    image: redis:5.0
+    container_name: sentinel3
+    depends_on:
+      - slave3
+    ports:
+      - 26381:26379
+    command: redis-sentinel /etc/redis/sentinel.conf
+    volumes:
+      - /D/coding-001/sky/sky-redisson/doc/1master3slave3sentinal/sentinel-26381.conf:/etc/redis/sentinel.conf
+    networks: 
+      extnetwork:
+        ipv4_address: 172.100.0.17
+networks:
+  extnetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.100.0.0/16
+          gateway: 172.100.0.1
+        
