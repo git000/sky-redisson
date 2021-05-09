@@ -7,7 +7,7 @@ services:
       - 6300:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.11
@@ -18,7 +18,7 @@ services:
       - 6301:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.12  
@@ -29,7 +29,7 @@ services:
       - 6302:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.13 
@@ -40,7 +40,7 @@ services:
       - 6303:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.14
@@ -51,7 +51,7 @@ services:
       - 6304:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.15
@@ -62,7 +62,7 @@ services:
       - 6305:6379
     command: redis-server /etc/redis/redis.conf #--appendonly yes
     volumes:
-      - /D/coding-001/sky/sky-redisson/doc//cluster/redis.conf:/etc/redis/redis.conf 
+      - /D/coding-001/sky/sky-redisson/doc/cluster/redis.conf:/etc/redis/redis.conf
     networks: 
       extnetwork:
         ipv4_address: 172.100.0.16
