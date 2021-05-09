@@ -57,6 +57,39 @@ docker run -itd --name test1 --network 1master3slave3sentinal_extnetwork --ip 17
 docker commit test1 centos-ssh:1
 
 #### 运行容器
-docker run -it --name centos7ssh --network 1master3slave3sentinal_extnetwork --ip 172.100.0.19 -p 6000:22 centos-ssh:1 /usr/sbin/sshd
+docker run -it --name centos7ssh --network 1master3slave3sentinal_extnetwork --ip 172.100.0.19 -p 6000:22 centos-ssh:1 /usr/sbin/sshd -D
 
 #### 在容器中执行jar
+
+
+### 
+
+docker run -it --name centos7sshc --network cluster_extnetwork --ip 172.100.0.09 -p 6000:22 centos-ssh:1 /usr/sbin/sshd -D 
+
+
+1:S 09 May 2021 09:56:47.658 * Master replied to PING, replication can continue...
+
+1:S 09 May 2021 09:56:47.658 * (Non critical) Master does not understand REPLCONF listening-port: -NOAUTH Authentication required.
+
+1:S 09 May 2021 09:56:47.658 * (Non critical) Master does not understand REPLCONF capa: -NOAUTH Authentication required.
+
+1:S 09 May 2021 09:56:47.658 * Partial resynchronization not possible (no cached master)
+
+1:S 09 May 2021 09:56:47.658 # Unexpected reply to PSYNC from master: -NOAUTH Authentication required.
+
+1:S 09 May 2021 09:56:47.658 * Retrying with SYNC...
+
+1:S 09 May 2021 09:56:47.658 # MASTER aborted replication with an error: NOAUTH Authentication required.
+
+1:S 09 May 2021 09:56:48.660 * Connecting to MASTER 172.100.0.12:6379
+
+1:S 09 May 2021 09:56:48.660 * MASTER <-> REPLICA sync started
+
+1:S 09 May 2021 09:56:48.660 * Non blocking connect for SYNC fired the event.
+
+1:S 09 May 2021 09:56:48.660 * Master replied to PING, replication can continue...
+
+1:S 09 May 2021 09:56:48.661 * (Non critical) Master does not understand REPLCONF listening-port: -NOAUTH Authentication required.
+
+1:S 09 May 2021 09:56:48.661 * (Non critical) Master does not understand REPLCONF capa: -NOAUTH Authentication required.
+
